@@ -1,4 +1,4 @@
-import { differenceBy } from './differenceBy.ts';
+import { difference } from './difference.ts';
 import { intersectionBy } from './intersectionBy.ts';
 import { unionBy } from './unionBy.ts';
 
@@ -25,5 +25,5 @@ export function xorBy<T, U>(arr1: readonly T[], arr2: readonly T[], mapper: (ite
   const union = unionBy(arr1, arr2, mapper);
   const intersection = intersectionBy(arr1, arr2, mapper);
 
-  return differenceBy(union, intersection, mapper);
+  return difference(union, intersection);
 }
