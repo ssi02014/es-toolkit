@@ -18,7 +18,14 @@ export function uniqWith<T>(arr: readonly T[], areItemsEqual: (item1: T, item2: 
 
   for (let i = 0; i < arr.length; i++) {
     const item = arr[i];
-    const isUniq = result.every(v => !areItemsEqual(v, item));
+    let isUniq = true;
+
+    for (let j = 0; j < result.length; j++) {
+      if (areItemsEqual(result[j], item)) {
+        isUniq = false;
+        break;
+      }
+    }
 
     if (isUniq) {
       result.push(item);
