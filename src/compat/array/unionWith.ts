@@ -1,6 +1,6 @@
-import { last as lastToolkit } from '../../array/last.ts';
-import { uniq as uniqToolkit } from '../../array/uniq.ts';
-import { uniqWith as uniqWithToolkit } from '../../array/uniqWith.ts';
+import { last } from '../../array/last.ts';
+import { uniq } from '../../array/uniq.ts';
+import { uniqWith } from '../../array/uniqWith.ts';
 import { flattenArrayLike } from '../_internal/flattenArrayLike.ts';
 
 /**
@@ -94,15 +94,15 @@ export function unionWith<T>(
  */
 
 export function unionWith<T>(...values: Array<ArrayLike<T> | null | undefined | ((a: T, b: T) => boolean)>): T[] {
-  const lastValue = lastToolkit(values);
+  const lastValue = last(values);
   const flattened = flattenArrayLike(values as Array<ArrayLike<T>>);
 
   if (typeof lastValue !== 'function') {
-    return uniqToolkit(flattened);
+    return uniq(flattened);
   }
 
   // `es-toolkit`'s `uniqWith` invokes the comparator as `(kept, candidate)`, but
   // lodash documents and invokes it as `(candidate, kept)`. Swap the arguments so
   // that asymmetric comparators behave the same as in lodash.
-  return uniqWithToolkit(flattened, (kept, candidate) => lastValue(candidate, kept));
+  return uniqWith(flattened, (kept, candidate) => lastValue(candidate, kept));
 }
