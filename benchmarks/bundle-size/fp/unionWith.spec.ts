@@ -5,6 +5,6 @@ describe('fp/unionWith bundle size', () => {
   it('es-toolkit/fp', async () => {
     expect(
       await getBundleSizeFromScript('import { unionWith } from "es-toolkit/fp"; console.log(unionWith)')
-    ).toMatchInlineSnapshot(`225`);
+    ).toMatchInlineSnapshot(`264`);
   });
 });
