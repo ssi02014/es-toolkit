@@ -5,6 +5,6 @@ describe('fp/uniqWith bundle size', () => {
   it('es-toolkit/fp', async () => {
     expect(
       await getBundleSizeFromScript('import { uniqWith } from "es-toolkit/fp"; console.log(uniqWith)')
-    ).toMatchInlineSnapshot(`370`);
+    ).toMatchInlineSnapshot(`331`);
   });
 });
